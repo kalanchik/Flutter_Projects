@@ -27,7 +27,6 @@ class LastChats extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   AutoRouter.of(context).push(ChatsRoute(user: chat.sender));
-                  print("CLick");
                 },
                 child: Container(
                   padding:
