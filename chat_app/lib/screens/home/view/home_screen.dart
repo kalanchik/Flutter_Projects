@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:chat_app/screens/home/widgets/last_chats.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets.dart';
 
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -56,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: const Column(
                 children: [
-                  SizedBox(height: 20),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Favorite(),
                   SizedBox(
                     height: 20,

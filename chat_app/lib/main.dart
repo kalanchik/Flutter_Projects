@@ -1,21 +1,23 @@
-import 'package:chat_app/screens/home/view/home_screen.dart';
+import 'package:chat_app/router/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: const HomeScreen(),
+      routerConfig: _appRouter.config(),
     );
   }
 }
