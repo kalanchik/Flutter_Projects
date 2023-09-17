@@ -38,6 +38,7 @@ dependencies:
   auto_route: ^7.8.3
   material_design_icons_flutter: ^7.0.7296
   emoji_picker_flutter: ^1.6.1
+  bottom_sheet: ^4.0.0
 
 dev_dependencies:
   flutter_test:
