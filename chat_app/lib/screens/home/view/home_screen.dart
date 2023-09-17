@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:chat_app/screens/home/widgets/last_chats.dart';
+import 'package:chat_app/screens/home/pages/online.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets.dart';
+import '../pages/messages.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -13,6 +13,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  final List<String> categories = ["Messeges", "Online", "Groups", "Requests"];
+  List<Widget> pageList = [
+    const MessagesPage(),
+    const OnlinePage(),
+    const OnlinePage(),
+    const OnlinePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +54,41 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          const SelectorCategories(),
+          Container(
+            height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                final String category = categories[index];
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      category,
+                      style: TextStyle(
+                        color: (_selectedIndex == index)
+                            ? Colors.white
+                            : Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           Expanded(
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -56,18 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: const Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Favorite(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  LastChats(),
-                ],
-              ),
+              child: pageList[_selectedIndex],
             ),
           ),
         ],

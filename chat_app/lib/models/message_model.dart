@@ -161,3 +161,14 @@ List<Message> messages = [
     unread: true,
   ),
 ];
+
+List<User> onlineUserList = [
+  greg,
+  james,
+  olivia,
+  john,
+  sophia,
+  steven,
+  sam,
+  greg
+];

@@ -8,7 +8,6 @@ class SelectorCategories extends StatefulWidget {
 }
 
 class _SelectorCategoriesState extends State<SelectorCategories> {
-  int _selectedIndex = 0;
   final List<String> categories = ["Messeges", "Online", "Groups", "Requests"];
   @override
   Widget build(BuildContext context) {
@@ -25,17 +24,14 @@ class _SelectorCategoriesState extends State<SelectorCategories> {
           final String category = categories[index];
           return GestureDetector(
             onTap: () {
-              setState(() {
-                _selectedIndex = index;
-              });
+              setState(() {});
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 category,
                 style: TextStyle(
-                  color:
-                      (_selectedIndex == index) ? Colors.white : Colors.white60,
+                  color: (1 == index) ? Colors.white : Colors.white60,
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                   letterSpacing: 1.2,
